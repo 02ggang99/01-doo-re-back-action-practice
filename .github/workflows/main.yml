@@ -61,3 +61,11 @@ jobs:
           APPLICATION_YML: ${{ secrets.APPLICATION_YML }}
         run: |
           echo '${{ secrets.APPLICATION_YML }}' >> application.yml
+
+      - name: Start Containers
+        run: docker-compose -p doo-re up -d
+
+      - name: Build & Test
+        run: |
+          ./gradlew build --daemon --build-cache --parallel
+          java -Djarmode=layertools -jar build/libs/doore-0.0.1-SNAPSHOT.jar extract
