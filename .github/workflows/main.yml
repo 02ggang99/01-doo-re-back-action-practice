@@ -44,8 +44,9 @@ jobs:
             ~/db-docker-image/doo-re-db.tar \
             $ECR_REGISTRY/doo-re-dev:${{ secrets.DOORE_DB_TAG }}
 
+        # 메인 브랜치 완성 후 수정 예정
       - name: Create Docker Env File
-        working-directory: ./docker
+        # working-directory: ./docker 
         run: |
           echo '${{ secrets.DOCKER_ENV }}' >> .env
 
