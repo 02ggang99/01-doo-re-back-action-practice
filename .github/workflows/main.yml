@@ -50,6 +50,11 @@ jobs:
         run: |
           echo '${{ secrets.DOCKER_ENV }}' >> .env
 
+        # develop 브랜치에 docker/docker-compose 파일 생성 후 삭제 예정
+      - name: Create Docker Compose File
+        run: |
+          echo '${{ secrets.DOCKER_COMPOSE }}' >> docker-compose.yml
+
       - name: Create application.yml
         working-directory: ./src/main/resources
         env:
