@@ -95,7 +95,7 @@ jobs:
           envs: GITHUB_SHA
           script: |
             cd ~/01-doo-re-infrastructure/doo-re/deploy
-            ./deploy_server.sh ${GITHUB_SHA::8} dev
+            sudo ./deploy_server.sh ${GITHUB_SHA::8} dev
 
       - name: Notify Slack
         if: always()
