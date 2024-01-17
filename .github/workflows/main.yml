@@ -49,6 +49,7 @@ jobs:
         # working-directory: ./docker 
         run: |
           echo '${{ secrets.DOCKER_ENV }}' >> .env
+          echo "ECR_REGISTRY=${{ steps.login-ecr.outputs.registry }}" >> .env
 
         # develop 브랜치에 docker/docker-compose 파일 생성 후 삭제 예정
       - name: Create Docker Compose File
