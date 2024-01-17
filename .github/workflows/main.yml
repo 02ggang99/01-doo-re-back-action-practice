@@ -94,7 +94,7 @@ jobs:
           key: ${{ secrets.SSH_KEY_DEV }}
           envs: GITHUB_SHA
           script: |
-            cd ~/01-doo-re-infrastructure/doo-re/build/docker/data
+            cd ~/01-doo-re-infrastructure/doo-re/deploy
             ./deploy_server.sh ${GITHUB_SHA::8} dev
 
       - name: Notify Slack
