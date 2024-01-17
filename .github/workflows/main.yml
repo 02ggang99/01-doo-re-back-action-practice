@@ -85,3 +85,15 @@ jobs:
           ${GITHUB_SHA::8}.tar.gz \
           ${{ secrets.S3_DEV_BACK_LOCATION }}/${GITHUB_SHA::8}.tar.gz
 
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST_DEV }}
+          username: ${{ secrets.SSH_USERNAME_DEV }}
+          port: ${{ secrets.SSH_PORT_DEV }}
+          key: ${{ secrets.SSH_KEY_DEV }}
+          envs: GITHUB_SHA
+          script: |
+            cd ~/01-doo-re-infrastructure/doo-re/build/docker/data
+            ./deploy_server.sh ${GITHUB_SHA::8} dev
+
