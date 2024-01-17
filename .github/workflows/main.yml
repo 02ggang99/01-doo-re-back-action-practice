@@ -63,7 +63,7 @@ jobs:
           echo '${{ secrets.APPLICATION_YML }}' >> application.yml
 
       - name: Start Containers
-        run: docker-compose -p doo-re up -d
+        run: sudo docker-compose -p doo-re up -d
 
       - name: Build & Test
         run: |
